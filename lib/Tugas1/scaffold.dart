@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ScaffoldWidgetDay8 extends StatelessWidget {
-  const ScaffoldWidgetDay8({super.key});
+class Tugas1 extends StatelessWidget {
+  const Tugas1({super.key});
 
   @override
   Widget build(BuildContext context) {

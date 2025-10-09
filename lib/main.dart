@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 102, 18, 18)),
       ),
-      home: ScaffoldWidgetDay8(),
+      home: Tugas1(),
     );
   }
 }
