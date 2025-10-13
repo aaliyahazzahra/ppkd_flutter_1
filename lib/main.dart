@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_percobaan_1/Tugas1/scaffold.dart';
+import 'package:ppkd_percobaan_1/Tugas2/scaffold2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 102, 18, 18)),
       ),
-      home: Tugas1(),
+      home: Tugas2(),
     );
   }
 }
