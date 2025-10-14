@@ -11,8 +11,8 @@ class Tugas2 extends StatelessWidget {
     const Color accentRed = Color.fromARGB(255, 192, 57, 43); // Deep Red
         const Color softPink = Color.fromARGB(255, 231, 189, 184); // Soft Pink
     const Color secondaryWhite = Color.fromARGB(255, 236, 240, 241); // Off-white
-    // Definisi Warna
-    const String customFont = 'ArianaVioleta';
+    // Definisi Font
+    const String customFont = 'BeckyTahlia';
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 245, 245, 245),     // Warna Background
       appBar: AppBar(
@@ -31,12 +31,20 @@ class Tugas2 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // --- FOTO PROFIL
-          const CircleAvatar(
+          // --- FOTO PROFIL---
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: softPink, width: 5.0
+              )
+            ),
+            child: const CircleAvatar(
               radius: 60, // Ukuran lingkaran
               backgroundImage: AssetImage('assets/images/aaliyah_pp.jpg'), 
             ),
-          const SizedBox(height: 20.0), // Jarak antara foto profil dan nama
+          ),
+          const SizedBox(height: 30.0), // Jarak antara foto profil dan nama
           // --- Baris 1: Nama---
           Text(
             "Halo, nama saya",
@@ -51,7 +59,7 @@ class Tugas2 extends StatelessWidget {
               fontSize: 30,
               color: accentRed, // Warna Font
               fontWeight: FontWeight.bold, // Tebal
-              fontFamily: 'customFont', // Ganti jenis font
+              fontFamily: customFont, // Ganti jenis font
             ),
           ),
           // --- Baris 2: Email---
@@ -177,7 +185,7 @@ class Tugas2 extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      )
     );
   }
 }
