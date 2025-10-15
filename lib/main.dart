@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_percobaan_1/Tugas3/Scaffold3.dart';
+import 'package:ppkd_percobaan_1/Tugas3/finalTugas3.dart';
 import 'package:ppkd_percobaan_1/Tugas3/listview.dart';
-import 'package:ppkd_percobaan_1/Tugas3/textfield.dart';
+import 'package:ppkd_percobaan_1/Tugas3/tugas4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 102, 18, 18)),
       ),
-      home: GridViewWidgetDay10(),
+      home: Tugas4(),
     );
   }
 }
