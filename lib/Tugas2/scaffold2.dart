@@ -7,22 +7,40 @@ class Tugas2 extends StatelessWidget {
   Widget build(BuildContext context) {
     // Definisi Warna
     const Color primaryBlue = Color.fromARGB(255, 34, 49, 63); // Navy
-    const Color lightPrimaryBlue = Color.fromARGB(255, 66, 94, 119); // Light Navy 
+    const Color lightPrimaryBlue = Color.fromARGB(
+      255,
+      66,
+      94,
+      119,
+    ); // Light Navy
     const Color accentRed = Color.fromARGB(255, 192, 57, 43); // Deep Red
-        const Color softPink = Color.fromARGB(255, 231, 189, 184); // Soft Pink
-    const Color secondaryWhite = Color.fromARGB(255, 236, 240, 241); // Off-white
+    const Color softPink = Color.fromARGB(255, 231, 189, 184); // Soft Pink
+    const Color secondaryWhite = Color.fromARGB(
+      255,
+      236,
+      240,
+      241,
+    ); // Off-white
     // Definisi Font
     const String customFont = 'BeckyTahlia';
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 245, 245, 245),     // Warna Background
+      backgroundColor: const Color.fromARGB(
+        255,
+        245,
+        245,
+        245,
+      ), // Warna Background
       appBar: AppBar(
-        title: const Text("Profil Lengkap", style: TextStyle(color: Colors.white)), // Warna Font App Bar
+        title: const Text(
+          "Profil Lengkap",
+          style: TextStyle(color: Colors.white),
+        ), // Warna Font App Bar
         backgroundColor: lightPrimaryBlue, // Warna App Bar
-      actions: [
-        const Icon(
-              Icons.menu, // Ikon menu
-              color: Colors.white,
-            ),
+        actions: [
+          const Icon(
+            Icons.menu, // Ikon menu
+            color: Colors.white,
+          ),
           const SizedBox(width: 10),
         ],
       ),
@@ -35,13 +53,11 @@ class Tugas2 extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(
-                color: softPink, width: 5.0
-              )
+              border: Border.all(color: softPink, width: 5.0),
             ),
             child: const CircleAvatar(
               radius: 60, // Ukuran lingkaran
-              backgroundImage: AssetImage('assets/images/aaliyah_pp.jpg'), 
+              backgroundImage: AssetImage('assets/images/aaliyah_pp.jpg'),
             ),
           ),
           const SizedBox(height: 30.0), // Jarak antara foto profil dan nama
@@ -64,7 +80,10 @@ class Tugas2 extends StatelessWidget {
           ),
           // --- Baris 2: Email---
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               decoration: const BoxDecoration(
@@ -73,17 +92,14 @@ class Tugas2 extends StatelessWidget {
                 ),
               ),
               child: Row(
-                 // Agar semua posisi di tengah
+                // Agar semua posisi di tengah
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
-                  Icon(Icons.mark_email_read_outlined, color:  primaryBlue),
+                  Icon(Icons.mark_email_read_outlined, color: primaryBlue),
                   SizedBox(width: 15),
                   Text(
                     "aaliyahazzahra02@gmail.com",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color:  primaryBlue,
-                    ),
+                    style: TextStyle(fontSize: 16, color: primaryBlue),
                   ),
                 ],
               ),
@@ -91,7 +107,10 @@ class Tugas2 extends StatelessWidget {
           ),
           // --- Baris 3: Nomor Telepon---
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
             child: Row(
               children: [
                 const Icon(Icons.phone_android, color: primaryBlue),
@@ -102,18 +121,27 @@ class Tugas2 extends StatelessWidget {
                 ),
                 const Spacer(),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
-                  color: softPink, // Background label
-                  borderRadius: BorderRadius.circular(5)),
-                  child: Text("Kontak Utama",
-                  style: TextStyle(fontSize: 16, color: primaryBlue, fontWeight: FontWeight.w600),
+                    color: softPink, // Background label
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Text(
+                    "Kontak Utama",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: primaryBlue,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20.0), 
+          const SizedBox(height: 20.0),
           // --- Baris 4: Statistik---
           Row(
             children: [
@@ -129,8 +157,22 @@ class Tugas2 extends StatelessWidget {
                   ),
                   child: Column(
                     children: const [
-                      Text("145", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: secondaryWhite)), // Warna Font
-                      Text("Postingan", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: accentRed)),
+                      Text(
+                        "145",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: secondaryWhite,
+                        ),
+                      ), // Warna Font
+                      Text(
+                        "Postingan",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: accentRed,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -147,8 +189,22 @@ class Tugas2 extends StatelessWidget {
                   ),
                   child: Column(
                     children: const [
-                      Text("2.5K", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: secondaryWhite)),
-                      Text("Followers", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: accentRed)),
+                      Text(
+                        "2.5K",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: secondaryWhite,
+                        ),
+                      ),
+                      Text(
+                        "Followers",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: accentRed,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -156,9 +212,11 @@ class Tugas2 extends StatelessWidget {
             ],
           ),
           // --- Baris 5:Deskripsi Profil ---
-          const SizedBox(height: 25.0), 
+          const SizedBox(height: 25.0),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0), // Padding Horizontal
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25.0,
+            ), // Padding Horizontal
             child: const Text(
               "Fresh graduate dari Universitas Negeri Jakarta prodi Pendidikan Teknik Elektro. Saat ini fokus mendalami Flutter.",
               textAlign: TextAlign.center,
@@ -170,10 +228,10 @@ class Tugas2 extends StatelessWidget {
             ),
           ),
           // --- Baris 6: Hiasan---
-          const SizedBox(height: 30.0), 
+          const SizedBox(height: 30.0),
           Container(
             height: 60.0,
-            color: lightPrimaryBlue, 
+            color: lightPrimaryBlue,
             alignment: Alignment.center,
             child: const Text(
               "Let's Connect",
@@ -185,7 +243,7 @@ class Tugas2 extends StatelessWidget {
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }
