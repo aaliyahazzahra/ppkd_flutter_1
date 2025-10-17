@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
-class InkWellButtonDay12 extends StatelessWidget {
-  const InkWellButtonDay12({super.key});
+class FloatingActionButtonDay12 extends StatelessWidget {
+  const FloatingActionButtonDay12({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Inkwell Button")),
+      appBar: AppBar(title: Text("FloatingActionButton Button")),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              splashColor: Colors.green,
+            child: GestureDetector(
               onLongPress: () {
                 print("Tekan lama");
               },

@@ -38,6 +38,29 @@ class _State1Day12State extends State<Tugas5> {
         ),
         backgroundColor: Colors.teal,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        spacing: 20,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              counter--;
+              setState(() {});
+            },
+            tooltip: "Kurangkan Nilai",
+            child: Icon(Icons.remove),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              counter++;
+              setState(() {});
+            },
+            tooltip: "Tambahkan Nilai",
+            child: Icon(Icons.add),
+          ),
+        ],
+      ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.all(8),
@@ -57,14 +80,18 @@ class _State1Day12State extends State<Tugas5> {
                     ),
                     child: const CircleAvatar(
                       radius: 30, // Ukuran lingkaran
-                      backgroundImage: AssetImage(
-                        'assets/images/aaliyah_pp.jpg',
-                      ),
+                      backgroundImage: AssetImage('assets/images/orange.jpg'),
                     ),
                   ),
                   Spacer(),
                   if (showName) ...[
-                    Text(myName),
+                    Text(
+                      myName,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(width: 20.0),
                   ] else ...[
                     SizedBox(width: 10),
@@ -81,7 +108,7 @@ class _State1Day12State extends State<Tugas5> {
                 ],
               ),
 
-              // Gambar Postingan
+              // Jarak postingan dengan icon di bawah
               SizedBox(height: 8.0),
 
               // Gambar Postingan
@@ -139,39 +166,32 @@ class _State1Day12State extends State<Tugas5> {
                 },
                 child: Text("Lihat Selengkapnya"),
               ),
-
-              //kurang angka counter
-              Row(
-                children: [
-                  Text(
-                    counter.toStringAsFixed(3),
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                  Spacer(),
-                  FloatingActionButton(
-                    onPressed: () {
-                      counter--;
-                      setState(() {});
-                    },
-                    tooltip: "Tambah Data",
-                    child: Icon(Icons.minimize),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      counter++;
-                      setState(() {});
-                    },
-                    tooltip: "Tambah Data",
-                    child: Icon(Icons.add),
-                  ),
-                ],
+              Center(
+                child: Column(
+                  children: [
+                    Text(
+                      "Tentukan Nilai",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      counter.toInt().toString(),
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               //Ink Well
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
-                  splashColor: Colors.green,
+                  splashColor: const Color.fromARGB(255, 102, 216, 98),
                   onTap: () {
                     showDetil2 = !showDetil2;
                     print("Kotak Disentuh");
@@ -201,10 +221,10 @@ class _State1Day12State extends State<Tugas5> {
                     print("Tekan Lama");
                   },
                   onDoubleTap: () {
-                    print("Ditekan Sekali");
+                    print("Ditekan Dua Kali");
                   },
                   onTap: () {
-                    print("Ditekan Dua Kali");
+                    print("Ditekan Sekali");
                   },
                   child: Text("Tekan Aku"),
                 ),
