@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_percobaan_1/Tugas5/tugas5.dart';
+import 'package:ppkd_percobaan_1/Tugas6Slicing/tugas6.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 102, 18, 18),
         ),
       ),
-      home: Tugas5(),
+      home: TugasSlicing(),
     );
   }
 }
