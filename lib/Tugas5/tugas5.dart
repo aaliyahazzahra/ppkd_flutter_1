@@ -217,14 +217,21 @@ class _State1Day12State extends State<Tugas5> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onLongPress: () {
-                    print("Tekan Lama");
-                  },
-                  onDoubleTap: () {
-                    print("Ditekan Dua Kali");
-                  },
                   onTap: () {
                     print("Ditekan Sekali");
+                    counter++;
+                    setState(() {});
+                  },
+
+                  onDoubleTap: () {
+                    print("Ditekan Dua Kali");
+                    counter += 2;
+                    setState(() {});
+                  },
+                  onLongPress: () {
+                    print("Tekan Lama");
+                    counter += 3;
+                    setState(() {});
                   },
                   child: Text("Tekan Aku"),
                 ),
