@@ -23,7 +23,7 @@ class _State1Day12State extends State<Tugas5> {
 
   @override
   Widget build(BuildContext context) {
-    const Color softPink = Color.fromARGB(255, 82, 46, 42); // Soft Pink
+    const Color softPink = Color.fromARGB(255, 231, 189, 184); // Soft Pink
     const String customFont = 'BeckyTahlia';
     return Scaffold(
       appBar: AppBar(
