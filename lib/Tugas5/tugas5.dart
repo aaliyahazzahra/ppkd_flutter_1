@@ -233,7 +233,7 @@ class _State1Day12State extends State<Tugas5> {
                     counter += 3;
                     setState(() {});
                   },
-                  child: Text("Tekan Aku"),
+                  child: Text("Tekan Aku (untuk menambah nilai secara cepat)"),
                 ),
               ),
             ],
