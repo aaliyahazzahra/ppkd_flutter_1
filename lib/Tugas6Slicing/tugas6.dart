@@ -10,8 +10,10 @@ class TugasSlicing extends StatefulWidget {
 }
 
 class _TugasSlicingState extends State<TugasSlicing> {
-  bool showFav = false;
-  String favorite = "Disukai";
+  bool showRemember = false;
+  String remember = "ingat";
+  bool showPass = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,69 +39,130 @@ class _TugasSlicingState extends State<TugasSlicing> {
             height: 561,
             width: 343,
             decoration: BoxDecoration(
-              color: Color(0x60FFFFFF),
+              color: Color.fromRGBO(255, 255, 255, 0.60),
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(color: Color(0xffFFFFFF), width: 1),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(24.0),
+
               child: Column(
                 spacing: 12,
                 children: [
                   Image.asset("assets/images/Logo.png", height: 34.0),
                   const Text(
                     "Login",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 32,
+                      color: Color(0xff111827),
+                    ),
                   ),
                   const Text(
                     "Enter your email and password to log in ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12,
+                      color: Color(0xff6c7278),
+                    ),
                   ),
+                  SizedBox(height: 4),
+
                   CustomTextField(hintText: "Loisbecket@gmail.com"),
-                  CustomTextField(hintText: "*******"),
+                  CustomTextField(
+                    hintText: "*******",
+                    isVisibility: false,
+                    click: () {
+                      setState(() {
+                        showPass = !showPass;
+                      });
+                    },
+                    securePass: showPass,
+                  ),
+
                   Row(
                     children: [
-                      Icon(Icons.square_outlined),
-                      IconButton(
-                        onPressed: () {
-                          showFav = !showFav;
-                          setState(() {});
-                        },
-                        icon: Icon(
-                          showFav ? Icons.favorite : Icons.favorite_border,
-                          color: showFav ? Colors.red : Colors.grey,
+                      SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: Checkbox(
+                          value: showRemember,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              showRemember = value!;
+                              print("Remember me status: $showRemember");
+                            });
+                          },
+                          activeColor: Colors.blue,
                         ),
                       ),
-                      const Text(
-                        "Remember me",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showRemember = !showRemember;
+                            print("Remember me status: $showRemember");
+                          });
+                        },
+                        child: const Text(
+                          "Remember me",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xff6C7278),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       GestureDetector(
                         onTap: () {
                           setState(() {
                             print("ini buat lupa password  harusnya");
                           });
                         },
-                        child: (Text("Forget Password ?")),
+                        child: (Text(
+                          "Forgot Password ?",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xff4D81E7),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )),
                       ),
                     ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        print("ini udah login mestinya");
-                      });
-                    },
-                    child: Text("Login"),
+                  SizedBox(height: 0.2),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          print("ini udah login mestinya");
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        elevation: 5,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 10.0,
+                        ),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color(0xff1D61E7),
+                      ),
+                      child: Text("Log In"),
+                    ),
                   ),
+                  SizedBox(height: 0.2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Expanded(
                         child: Container(
                           height: 2,
-                          // width: 100,
+                          width: 100,
                           decoration: BoxDecoration(
                             color: Color(0x60FFFFFF),
                             borderRadius: BorderRadius.circular(12.0),
@@ -110,18 +173,22 @@ class _TugasSlicingState extends State<TugasSlicing> {
                           ),
                         ),
                       ),
+
                       SizedBox(width: 10),
                       const Text(
-                        "or login with",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        "Or login with",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                       SizedBox(width: 10),
                       Expanded(
                         child: Container(
                           height: 2,
-                          // width: 100,
+                          width: 100,
                           decoration: BoxDecoration(
-                            color: Color(0x60FFFFFF),
+                            color: Color.fromARGB(95, 255, 255, 255),
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(
                               color: Color(0xffFFFFFF),
@@ -132,10 +199,12 @@ class _TugasSlicingState extends State<TugasSlicing> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 0.2),
+
                   //Logo
                   Row(
-                    spacing: 29,
                     mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 12,
                     children: [
                       CustomThirdParty(imagePath: "assets/images/google.png"),
                       CustomThirdParty(imagePath: "assets/images/Facebook.png"),
@@ -143,12 +212,16 @@ class _TugasSlicingState extends State<TugasSlicing> {
                       CustomThirdParty(imagePath: "assets/images/device.png"),
                     ],
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         "Don't have an account?",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       SizedBox(width: 10),
                       GestureDetector(
@@ -157,7 +230,14 @@ class _TugasSlicingState extends State<TugasSlicing> {
                             print("ini buat daftar  harusnya");
                           });
                         },
-                        child: (Text("Sign Up")),
+                        child: (Text(
+                          "Sign Up",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xff4D81E7),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )),
                       ),
                     ],
                   ),

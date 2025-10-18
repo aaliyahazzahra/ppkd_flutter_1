@@ -7,17 +7,20 @@ class CustomThirdParty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 62.5,
-      width: 48,
+      height: 48,
+      width: 62.5,
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: Color(0x60FFFFFF),
+        color: Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: Color(0xffFFFFFF), width: 1),
+        border: Border.all(color: Color(0xffEFF0F6), width: 1),
       ),
       child: InkWell(
         splashColor: Color.fromARGB(255, 102, 216, 98),
-        onTap: () {},
-        child: Image.asset(imagePath, height: 18.0, width: 18),
+        onTap: () {
+          print("aplikasi");
+        },
+        child: Image.asset(imagePath),
       ),
     );
   }
