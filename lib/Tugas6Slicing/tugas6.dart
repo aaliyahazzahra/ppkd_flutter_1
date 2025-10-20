@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_percobaan_1/Latihan/customnav3.dart';
 import 'package:ppkd_percobaan_1/Tugas6Slicing/customtextfield.dart';
 import 'package:ppkd_percobaan_1/Tugas6Slicing/customthirdparty.dart';
 
@@ -136,6 +137,11 @@ class _TugasSlicingState extends State<TugasSlicing> {
                     height: 48,
                     child: ElevatedButton(
                       onPressed: () {
+                        // Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => Customnav3()),
+                        );
                         setState(() {
                           print("ini udah login mestinya");
                         });
