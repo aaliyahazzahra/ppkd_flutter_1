@@ -140,7 +140,7 @@ class _TugasSlicingState extends State<TugasSlicing> {
                         // Navigator.pop(context);
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => Customnav3()),
+                          MaterialPageRoute(builder: (context) => NavLucu()),
                         );
                         setState(() {
                           print("ini udah login mestinya");

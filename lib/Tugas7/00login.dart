@@ -55,8 +55,7 @@ class _DrawerWidgetDay15State extends State<DrawerWidgetDay15> {
               accountEmail: Text("Jakarta Selatan"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage("assets/images/whiteCoat.jpg"),
-                // child: Icon(Icons.person, size: 40, color: Colors.indigo),
+                backgroundImage: AssetImage("assets/images/orange.jpg"),
               ),
               decoration: BoxDecoration(color: Colors.indigo),
             ),
