@@ -46,14 +46,14 @@ class _Tugas9State extends State<Tugas9> {
           BottomBarItem(
             iconBuilder: (color) =>
                 Icon(Icons.list, color: const Color.fromARGB(255, 17, 20, 199)),
-            label: 'Home',
+            label: 'List',
           ),
 
           // Item 2
           BottomBarItem(
             iconBuilder: (color) =>
                 Icon(Icons.map, color: const Color.fromARGB(255, 17, 20, 199)),
-            label: 'About',
+            label: 'List Map',
           ),
           // Item 2
           BottomBarItem(
@@ -61,7 +61,7 @@ class _Tugas9State extends State<Tugas9> {
               Icons.model_training,
               color: const Color.fromARGB(255, 17, 20, 199),
             ),
-            label: 'About',
+            label: 'Model',
           ),
         ],
         onSelect: (index) {
