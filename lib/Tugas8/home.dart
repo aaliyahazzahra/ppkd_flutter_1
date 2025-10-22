@@ -1,21 +1,21 @@
 import 'package:bottom_bar_matu/bottom_bar/bottom_bar_bubble.dart';
 import 'package:bottom_bar_matu/bottom_bar_item.dart';
 import 'package:flutter/material.dart';
-import 'package:ppkd_percobaan_1/Tugas7/00HalamanHome.dart';
 import 'package:ppkd_percobaan_1/Tugas8/profile.dart';
+import 'package:ppkd_percobaan_1/Tugas9/list.dart';
 
-class CustomNav5 extends StatefulWidget {
-  const CustomNav5({super.key});
+class Tugas8 extends StatefulWidget {
+  const Tugas8({super.key});
 
   @override
-  State<CustomNav5> createState() => _CustomNav5State();
+  State<Tugas8> createState() => _Tugas8State();
 }
 
-class _CustomNav5State extends State<CustomNav5> {
+class _Tugas8State extends State<Tugas8> {
   int _selectedIndex = 0;
 
   // HANYA 2 HALAMAN (Indeks 0 dan 1)
-  static const List<Widget> _widgetOptions = [HalamanHome(), HalamanProfile()];
+  static const List<Widget> _widgetOptions = [TugasList(), HalamanProfile()];
 
   @override
   Widget build(BuildContext context) {

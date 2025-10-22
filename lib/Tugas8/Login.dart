@@ -136,7 +136,7 @@ class _HalamanLoginState extends State<HalamanLogin> {
                         // Navigator.pop(context);
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => CustomNav5()),
+                          MaterialPageRoute(builder: (context) => Tugas8()),
                         );
                         setState(() {
                           print("ini udah login mestinya");

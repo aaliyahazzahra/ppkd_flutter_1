@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_percobaan_1/Tugas8/Login.dart';
+import 'package:ppkd_percobaan_1/Tugas9/halaman_utama.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 102, 18, 18),
         ),
       ),
-      home: HalamanLogin(),
+      home: Tugas9(),
     );
   }
 }
