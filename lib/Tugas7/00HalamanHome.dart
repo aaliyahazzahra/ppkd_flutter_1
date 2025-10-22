@@ -6,17 +6,17 @@ import 'package:ppkd_percobaan_1/Tugas7/04tanggal.dart';
 import 'package:ppkd_percobaan_1/Tugas7/05jam.dart';
 
 void main() {
-  runApp(const MaterialApp(home: DrawerWidgetDay15()));
+  runApp(const MaterialApp(home: HalamanHome()));
 }
 
-class DrawerWidgetDay15 extends StatefulWidget {
-  const DrawerWidgetDay15({super.key});
+class HalamanHome extends StatefulWidget {
+  const HalamanHome({super.key});
 
   @override
-  State<DrawerWidgetDay15> createState() => _DrawerWidgetDay15State();
+  State<HalamanHome> createState() => _HalamanHomeState();
 }
 
-class _DrawerWidgetDay15State extends State<DrawerWidgetDay15> {
+class _HalamanHomeState extends State<HalamanHome> {
   int _selectedIndex = 0;
 
   // DAFTAR WIDGET
