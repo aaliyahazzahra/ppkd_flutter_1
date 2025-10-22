@@ -17,16 +17,10 @@ class _HalamanCheckBoxState extends State<HalamanCheckBox> {
   bool isShower = false;
   bool isBreakfast = false;
   bool isHappy = false;
-  final Color armyGreenColor = const Color(0xFF4B5320);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Halaman Checkbox Input"),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -75,7 +69,7 @@ class _HalamanCheckBoxState extends State<HalamanCheckBox> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: isChecked
-                    ? armyGreenColor
+                    ? Color(0xff6E8E59)
                     : Colors.grey.shade400,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(

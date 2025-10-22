@@ -38,8 +38,21 @@ class _PilihTanggalState extends State<PilihTanggal> {
                 });
               }
             },
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 5,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              foregroundColor: Color(0xffEAFAEA),
+              backgroundColor: Color(0xff6E8E59),
+            ),
             child: Text("Pilih Tanggal Lahir"),
           ),
+          SizedBox(height: 20),
           Text(
             // Menggunakan getter birthDate yang sudah diformat
             birthDate,
@@ -47,7 +60,7 @@ class _PilihTanggalState extends State<PilihTanggal> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.pink.shade700,
+              color: Color(0xff6E8E59),
             ),
           ),
         ],

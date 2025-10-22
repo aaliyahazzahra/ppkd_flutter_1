@@ -26,7 +26,7 @@ class _HalamanSwitchState extends State<HalamanSwitch> {
         Expanded(
           child: Container(
             width: double.infinity,
-            color: isSwitched ? Colors.black87 : Colors.green,
+            color: isSwitched ? Colors.black87 : Color(0xffCAE0BC),
           ),
         ),
       ],

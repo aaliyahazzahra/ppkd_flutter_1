@@ -34,19 +34,24 @@ class _HalamanDropdownState extends State<HalamanDropdown> {
             print(dropDownValue);
           },
         ),
-        Container(
-          width: double.infinity,
-          height: 100,
-          color: dropDownValue == "Elektronik"
-              ? Colors.red
-              : dropDownValue == "Pakaian"
-              ? const Color.fromARGB(255, 165, 175, 76)
-              : dropDownValue == "Makanan"
-              ? const Color.fromARGB(255, 244, 54, 158)
-              : dropDownValue == "Lainnya"
-              ? const Color.fromARGB(255, 54, 244, 171)
-              : Colors.blue,
-          child: Text("Anda memilih kategori $dropDownValue"),
+        Expanded(
+          child: Container(
+            width: double.infinity,
+            height: 100,
+            color: dropDownValue == "Elektronik"
+                ? const Color.fromARGB(255, 252, 125, 116)
+                : dropDownValue == "Pakaian"
+                ? const Color.fromARGB(255, 165, 175, 76)
+                : dropDownValue == "Makanan"
+                ? const Color.fromARGB(255, 244, 54, 158)
+                : dropDownValue == "Lainnya"
+                ? const Color.fromARGB(255, 54, 244, 171)
+                : Colors.blue,
+            child: Text(
+              "Anda memilih kategori $dropDownValue",
+              style: TextStyle(fontSize: 50),
+            ),
+          ),
         ),
       ],
     );

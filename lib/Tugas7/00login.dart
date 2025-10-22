@@ -41,8 +41,8 @@ class _DrawerWidgetDay15State extends State<DrawerWidgetDay15> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("PRD"),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        backgroundColor: Color(0xff780C28),
+        foregroundColor: Color(0xffEAFAEA),
       ),
 
       drawer: Drawer(
@@ -52,12 +52,12 @@ class _DrawerWidgetDay15State extends State<DrawerWidgetDay15> {
             // Header Drawer (User Profile)
             const UserAccountsDrawerHeader(
               accountName: Text("Halo,"),
-              accountEmail: Text("Jakarta Selatan"),
+              accountEmail: Text("Peserta PPKD"),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: Color(0xffEAFAEA),
                 backgroundImage: AssetImage("assets/images/orange.jpg"),
               ),
-              decoration: BoxDecoration(color: Colors.indigo),
+              decoration: BoxDecoration(color: Color(0xff780C28)),
             ),
 
             // ITEM MENU 1
