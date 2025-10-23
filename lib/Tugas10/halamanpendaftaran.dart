@@ -140,7 +140,12 @@ class _Tugas10State extends State<Tugas10> {
                             }
                             return null; //  Sukses jika terisi
                           },
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            setState(() {
+                              // Cek status form saat ini dan simpan di variabel
+                              isFormValid = _formKey.currentState!.validate();
+                            });
+                          },
                         ),
                         //FORM EMAIL
                         TextFormField(
@@ -158,7 +163,12 @@ class _Tugas10State extends State<Tugas10> {
                             }
                             return null;
                           },
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            setState(() {
+                              // Cek status form saat ini dan simpan di variabel
+                              isFormValid = _formKey.currentState!.validate();
+                            });
+                          },
                         ),
                         // FORM NOMOR HP
                         TextFormField(
@@ -191,9 +201,14 @@ class _Tugas10State extends State<Tugas10> {
                             }
                             return null; //  Sukses jika terisi
                           },
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            setState(() {
+                              // Cek status form saat ini dan simpan di variabel
+                              isFormValid = _formKey.currentState!.validate();
+                            });
+                          },
                         ),
-                        SizedBox(height: 10),
+
                         //Tombol Daftar
                         SizedBox(
                           height: 50,
