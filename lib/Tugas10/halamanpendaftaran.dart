@@ -12,16 +12,39 @@ class Tugas10 extends StatefulWidget {
 
 class _Tugas10State extends State<Tugas10> {
   //DISINI KAN YA POSISINYA...
+  @override
   void dispose() {
     emailController.dispose();
+    namaController.dispose();
+    hpController.dispose();
+    kotaController.dispose();
     super.dispose();
   }
 
   void _tampilkanDialog() {
+    // Menampilkan dialog
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(title: Text("SIGN UP"));
+        return AlertDialog(
+          title: Text('Data'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Terima kasih, ${namaController.text} dari ${kotaController.text} telah mendaftar.',
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              // Tombol untuk menutup dialog
+              onPressed: () => Navigator.pop(context),
+              child: Text('Lanjut'),
+            ),
+          ],
+        );
       },
     );
   }
@@ -32,6 +55,9 @@ class _Tugas10State extends State<Tugas10> {
   bool showPass = false;
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
+  final namaController = TextEditingController();
+  final hpController = TextEditingController();
+  final kotaController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +127,8 @@ class _Tugas10State extends State<Tugas10> {
                         //YAK MULAI SINI SAJA BERPIKIRNYA
                         // FORM NAMA
                         TextFormField(
-                          controller: emailController,
+                          controller: namaController,
+
                           decoration: InputDecoration(
                             labelText: 'Nama Lengkap',
                           ),
@@ -120,6 +147,7 @@ class _Tugas10State extends State<Tugas10> {
                         ),
                         //FORM EMAIL
                         TextFormField(
+                          controller: emailController,
                           decoration: InputDecoration(labelText: 'Email Aktif'),
                           validator: (value) {
                             // Memastikan form tidak kosong
@@ -142,6 +170,7 @@ class _Tugas10State extends State<Tugas10> {
                         ),
                         // FORM NOMOR HP
                         TextFormField(
+                          controller: hpController,
                           decoration: InputDecoration(labelText: 'Nomor HP'),
                           validator: (value) {
                             if (value != null && value.isNotEmpty) {
@@ -162,6 +191,7 @@ class _Tugas10State extends State<Tugas10> {
                         ),
                         // FORM KOTA
                         TextFormField(
+                          controller: kotaController,
                           decoration: InputDecoration(labelText: 'Kota'),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -191,11 +221,7 @@ class _Tugas10State extends State<Tugas10> {
                           ),
                           onPressed: isFormValid
                               ? () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Pendaftaran diproses'),
-                                    ),
-                                  );
+                                  _tampilkanDialog();
                                 }
                               : null, // menonaktifkan tombol
                           child: Text('DAFTAR', style: TextStyle(fontSize: 18)),
