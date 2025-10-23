@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_percobaan_1/Tugas10/halamanpendaftaran.dart';
+import 'package:ppkd_percobaan_1/Latihan/login.dart';
+import 'package:ppkd_percobaan_1/Latihan/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 102, 18, 18),
         ),
       ),
-      home: Tugas10(),
+      home: SplashScreenDay18(),
     );
   }
 }
