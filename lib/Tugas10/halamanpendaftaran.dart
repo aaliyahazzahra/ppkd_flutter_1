@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_percobaan_1/Latihan/customnav3.dart';
-import 'package:ppkd_percobaan_1/Tugas6Slicing/customtextfield.dart';
-import 'package:ppkd_percobaan_1/Tugas6Slicing/customthirdparty.dart';
+import 'package:ppkd_percobaan_1/Tugas10/halamanterimakasih.dart';
 
 class Tugas10 extends StatefulWidget {
   const Tugas10({super.key});
@@ -40,7 +38,19 @@ class _Tugas10State extends State<Tugas10> {
           actions: [
             TextButton(
               // Tombol untuk menutup dialog
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Halamanterimakasih(
+                      nama: namaController.text,
+                      email: emailController.text,
+                      kota: kotaController.text,
+                    ),
+                  ),
+                );
+              },
               child: Text('Lanjut'),
             ),
           ],
@@ -80,7 +90,7 @@ class _Tugas10State extends State<Tugas10> {
 
           //Background putih
           Container(
-            height: 561,
+            height: 680,
             width: 343,
             decoration: BoxDecoration(
               color: Color.fromRGBO(255, 255, 255, 0.60),
@@ -97,22 +107,14 @@ class _Tugas10State extends State<Tugas10> {
                     Column(
                       spacing: 12,
                       children: [
-                        Row(
-                          spacing: 5,
-                          children: [
-                            Image.asset(
-                              "assets/images/Logosim.png",
-                              height: 34.0,
-                            ),
-                            const Text(
-                              "SIGN UP",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 32,
-                                color: Color(0xff111827),
-                              ),
-                            ),
-                          ],
+                        Image.asset("assets/images/Logisim.png", height: 50.0),
+                        const Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 32,
+                            color: Color(0xff111827),
+                          ),
                         ),
                         const Text(
                           "Enter your email and password to Sign up",
@@ -138,12 +140,7 @@ class _Tugas10State extends State<Tugas10> {
                             }
                             return null; //  Sukses jika terisi
                           },
-                          onChanged: (value) {
-                            setState(() {
-                              // Cek status form saat ini dan simpan di variabel
-                              isFormValid = _formKey.currentState!.validate();
-                            });
-                          },
+                          onChanged: (value) {},
                         ),
                         //FORM EMAIL
                         TextFormField(
@@ -161,12 +158,7 @@ class _Tugas10State extends State<Tugas10> {
                             }
                             return null;
                           },
-                          onChanged: (value) {
-                            setState(() {
-                              // Cek status form saat ini dan simpan di variabel
-                              isFormValid = _formKey.currentState!.validate();
-                            });
-                          },
+                          onChanged: (value) {},
                         ),
                         // FORM NOMOR HP
                         TextFormField(
@@ -199,213 +191,35 @@ class _Tugas10State extends State<Tugas10> {
                             }
                             return null; //  Sukses jika terisi
                           },
-                          onChanged: (value) {
-                            setState(() {
-                              // Cek status form saat ini dan simpan di variabel
-                              isFormValid = _formKey.currentState!.validate();
-                            });
-                          },
+                          onChanged: (value) {},
                         ),
                         SizedBox(height: 10),
                         //Tombol Daftar
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: isFormValid
-                                ? Color(0xff6E8E59)
-                                : Colors.grey.shade400,
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                        SizedBox(
+                          height: 50,
+                          width: 100,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: isFormValid
+                                  ? Color(0xff6E8E59)
+                                  : Colors.grey.shade400,
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              foregroundColor: Colors.white,
                             ),
-                            foregroundColor: Colors.white,
+                            onPressed: isFormValid
+                                ? () {
+                                    _tampilkanDialog();
+                                  }
+                                : null, // menonaktifkan tombol
+                            child: Text(
+                              'DAFTAR',
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
-                          onPressed: isFormValid
-                              ? () {
-                                  _tampilkanDialog();
-                                }
-                              : null, // menonaktifkan tombol
-                          child: Text('DAFTAR', style: TextStyle(fontSize: 18)),
                         ),
-
-                        // CustomTextField(
-                        //   hintText: "*******",
-                        //   isVisibility: false,
-                        //   click: () {
-                        //     setState(() {
-                        //       showPass = !showPass;
-                        //     });
-                        //   },
-                        //   securePass: showPass,
-                        // ),
-
-                        // Row(
-                        //   children: [
-                        //     SizedBox(
-                        //       width: 24,
-                        //       height: 24,
-                        //       child: Checkbox(
-                        //         value: showRemember,
-                        //         onChanged: (bool? value) {
-                        //           setState(() {
-                        //             showRemember = value!;
-                        //             print("Remember me status: $showRemember");
-                        //           });
-                        //         },
-                        //         activeColor: Colors.blue,
-                        //       ),
-                        //     ),
-                        //     GestureDetector(
-                        //       onTap: () {
-                        //         setState(() {
-                        //           showRemember = !showRemember;
-                        //           print("Remember me status: $showRemember");
-                        //         });
-                        //       },
-                        //       child: const Text(
-                        //         "Remember me",
-                        //         style: TextStyle(
-                        //           fontSize: 12,
-                        //           color: Color(0xff6C7278),
-                        //           fontWeight: FontWeight.w500,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //     const Spacer(),
-                        //     GestureDetector(
-                        //       onTap: () {
-                        //         setState(() {
-                        //           print("ini buat lupa password  harusnya");
-                        //         });
-                        //       },
-                        //       child: (Text(
-                        //         "Forgot Password ?",
-                        //         style: TextStyle(
-                        //           fontSize: 12,
-                        //           color: Color(0xff4D81E7),
-                        //           fontWeight: FontWeight.w600,
-                        //         ),
-                        //       )),
-                        //     ),
-                        //   ],
-                        // ),
-                        // SizedBox(height: 0.2),
-                        // SizedBox(
-                        //   width: double.infinity,
-                        //   height: 48,
-                        //   child: ElevatedButton(
-                        //     onPressed: () {
-                        //       // Navigator.pop(context);
-                        //       Navigator.pushReplacement(
-                        //         context,
-                        //         MaterialPageRoute(builder: (context) => NavLucu()),
-                        //       );
-                        //       setState(() {
-                        //         print("ini udah login mestinya");
-                        //       });
-                        //     },
-                        //     style: ElevatedButton.styleFrom(
-                        //       shape: RoundedRectangleBorder(
-                        //         borderRadius: BorderRadius.circular(12.0),
-                        //       ),
-                        //       elevation: 5,
-                        //       padding: const EdgeInsets.symmetric(
-                        //         horizontal: 20.0,
-                        //         vertical: 10.0,
-                        //       ),
-                        //       foregroundColor: Colors.white,
-                        //       backgroundColor: Color(0xff1D61E7),
-                        //     ),
-                        //     child: Text("Log In"),
-                        //   ),
-                        // ),
-                        // SizedBox(height: 0.2),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     Expanded(
-                        //       child: Container(
-                        //         height: 2,
-                        //         width: 100,
-                        //         decoration: BoxDecoration(
-                        //           color: Color(0x60FFFFFF),
-                        //           borderRadius: BorderRadius.circular(12.0),
-                        //           border: Border.all(
-                        //             color: Color(0xffFFFFFF),
-                        //             width: 1,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-
-                        //     SizedBox(width: 10),
-                        //     const Text(
-                        //       "Or login with",
-                        //       style: TextStyle(
-                        //         fontSize: 12,
-                        //         fontWeight: FontWeight.w400,
-                        //       ),
-                        //     ),
-                        //     SizedBox(width: 10),
-                        //     Expanded(
-                        //       child: Container(
-                        //         height: 2,
-                        //         width: 100,
-                        //         decoration: BoxDecoration(
-                        //           color: Color.fromARGB(95, 255, 255, 255),
-                        //           borderRadius: BorderRadius.circular(12.0),
-                        //           border: Border.all(
-                        //             color: Color(0xffFFFFFF),
-                        //             width: 1,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
-                        // SizedBox(height: 0.2),
-
-                        //YAK SAMPAI SINI SAJA BERPIKIRNYA
-
-                        //Logo
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   spacing: 12,
-                        //   children: [
-                        //     CustomThirdParty(imagePath: "assets/images/google.png"),
-                        //     CustomThirdParty(imagePath: "assets/images/Facebook.png"),
-                        //     CustomThirdParty(imagePath: "assets/images/apple.png"),
-                        //     CustomThirdParty(imagePath: "assets/images/device.png"),
-                        //   ],
-                        // ),
-
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     const Text(
-                        //       "Don't have an account?",
-                        //       style: TextStyle(
-                        //         fontSize: 12,
-                        //         fontWeight: FontWeight.w500,
-                        //       ),
-                        //     ),
-                        //     SizedBox(width: 10),
-                        //     GestureDetector(
-                        //       onTap: () {
-                        //         setState(() {
-                        //           print("ini buat daftar  harusnya");
-                        //         });
-                        //       },
-                        //       child: (Text(
-                        //         "Sign Up",
-                        //         style: TextStyle(
-                        //           fontSize: 12,
-                        //           color: Color(0xff4D81E7),
-                        //           fontWeight: FontWeight.w600,
-                        //         ),
-                        //       )),
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
                   ],
