@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_percobaan_1/Latihan/login.dart';
+import 'package:ppkd_percobaan_1/Tugas11/login_screen.dart';
 import 'package:ppkd_percobaan_1/Tugas7/00HalamanHome.dart';
 import 'package:ppkd_percobaan_1/constant/app_image.dart';
 import 'package:ppkd_percobaan_1/preferences/preferences_handler.dart';
@@ -31,7 +32,7 @@ class _SplashScreenDay18State extends State<SplashScreenDay18> {
       } else {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => CobaSharedPreferences()),
+          MaterialPageRoute(builder: (context) => LoginScreenDay18()),
           (route) => false,
         );
       }
@@ -45,11 +46,11 @@ class _SplashScreenDay18State extends State<SplashScreenDay18> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(child: Image.asset(AppImages.anggur)),
-          Text(
-            "Apel Apps",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
+          Center(child: Image.asset(AppImages.logisim)),
+          // Text(
+          //   "Apel Apps",
+          //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          // ),
         ],
       ),
     );

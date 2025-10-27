@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_percobaan_1/constant/app_color.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({super.key, this.onPressed, required this.text});
+  const LoginButton({
+    super.key,
+    this.onPressed,
+    required this.text,
+    required Widget child,
+  });
   final void Function()? onPressed;
   final String text;
   @override

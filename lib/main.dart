@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_percobaan_1/Tugas11/login_screen.dart';
+import 'package:ppkd_percobaan_1/Tugas11/splash_screen.dart';
 import 'package:ppkd_percobaan_1/Tugas11/view/create_student.dart';
 
 void main() {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 102, 18, 18),
         ),
       ),
-      home: CRWidgetDay19(),
+      home: SplashScreenDay18(),
     );
   }
 }

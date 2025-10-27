@@ -11,4 +11,5 @@ class AppImages {
   static const pir = "$assetImage/pir.jpg";
   static const pisang = "$assetImage/pisang.jpg";
   static const salak = "$assetImage/salak.jpg";
+  static const logisim = "$assetImage/Logisim.png";
 }

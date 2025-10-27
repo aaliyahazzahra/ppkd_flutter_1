@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert'; //KONSEP CRUD
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class StudentModel {
@@ -30,7 +30,7 @@ class StudentModel {
     return StudentModel(
       // id: map['id'] as int,
       email: map['email'] as String,
-      password: map['class'] as String,
+      password: map['password'] as String,
       name: map['name'] as String,
       nim: map['nim'] as String,
     );

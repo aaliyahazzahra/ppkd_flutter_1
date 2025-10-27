@@ -1,10 +1,10 @@
+import 'package:bottom_bar_matu/components/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ppkd_percobaan_1/Latihan/widget.dart';
-import 'package:ppkd_percobaan_1/Tugas11/database/db_helper.dart';
 import 'package:ppkd_percobaan_1/Tugas11/model/user_model.dart';
+import 'package:ppkd_percobaan_1/Tugas11/view/create_student.dart';
 
-//Bahas Shared Preference
 class RegisterScreenDay19 extends StatefulWidget {
   const RegisterScreenDay19({super.key});
   static const id = "/register";
@@ -13,175 +13,158 @@ class RegisterScreenDay19 extends StatefulWidget {
 }
 
 class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  // Buat instance
+  late RegisterLogic _logic;
+
   bool isVisibility = false;
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Stack(children: [buildBackground(), buildLayer()]));
+  void initState() {
+    super.initState();
+    _logic = RegisterLogic(); // Inisialisasi logic class
+
+    _logic.addListener(() {
+      setState(() {});
+    });
   }
 
-  // register() async {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => HomeScreenDay15()),
-  //   );
-  // }
+  @override
+  void dispose() {
+    _logic.removeListener(() {});
+    _logic.dispose();
+    super.dispose();
+  }
 
-  final _formKey = GlobalKey<FormState>();
-  SafeArea buildLayer() {
-    return SafeArea(
-      child: Form(
-        key: _formKey,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Registrasi & Daftar Pengguna")),
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(
+
+          child: Form(
+            key: _logic.formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  "Welcome",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                height(12),
-                Text(
-                  "Register to access your account",
-                  // style: TextStyle(fontSize: 14, color: AppColor.gray88),
-                ),
-                height(24),
-                buildTitle("Username"),
-                height(12),
-                buildTextField(
-                  hintText: "Enter your username",
-                  controller: usernameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Username tidak boleh kosong";
-                    }
-                    return null;
-                  },
-                ),
+                Card(
+                  color: colorYellowDark,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        height(16),
+                        buildTitle("Nama"),
+                        height(4),
+                        buildTextField(
+                          hintText: "Enter your full name",
 
-                height(16),
-                buildTitle("Email Address"),
-                height(12),
-                buildTextField(
-                  hintText: "Enter your email",
-                  controller: emailController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Email tidak boleh kosong";
-                    } else if (!value.contains('@')) {
-                      return "Email tidak valid";
-                    } else if (!RegExp(
-                      r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
-                    ).hasMatch(value)) {
-                      return "Format Email tidak valid";
-                    }
-                    return null;
-                  },
-                ),
-
-                height(16),
-                buildTitle("Password"),
-                height(12),
-                buildTextField(
-                  hintText: "Enter your password",
-                  isPassword: true,
-                  controller: passwordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Password tidak boleh kosong";
-                    } else if (value.length < 6) {
-                      return "Password minimal 6 karakter";
-                    }
-                    return null;
-                  },
-                ),
-                height(24),
-                LoginButton(
-                  text: "Register",
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      print(emailController.text);
-                      final UserModel data = UserModel(
-                        email: emailController.text,
-                        username: usernameController.text,
-                        password: passwordController.text,
-                      );
-                      DbHelper.registerUser(data);
-                      Fluttertoast.showToast(msg: "Register Berhasil");
-                      // PreferenceHandler.saveLogin(true);
-                      Navigator.pop(context);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => DrawerWidgetDay15(),
-                      //   ),
-                      // );
-                    } else {
-                      // showDialog(
-                      //   context: context,
-                      //   builder: (context) {
-                      //     return AlertDialog(
-                      //       title: Text("Validation Error"),
-                      //       content: Text("Please fill all fields"),
-                      //       actions: [
-                      //         TextButton(
-                      //           child: Text("OK"),
-                      //           onPressed: () {
-                      //             Navigator.pop(context);
-                      //           },
-                      //         ),
-                      //         TextButton(
-                      //           child: Text("Ga OK"),
-                      //           onPressed: () {
-                      //             Navigator.pop(context);
-                      //           },
-                      //         ),
-                      //       ],
-                      //     );
-                      //   },
-                      // );
-                    }
-                  },
-                ),
-                // height(20),
-                // LoginButton(
-                //   text: "Ke Day13",
-                //   onPressed: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(builder: (context) => DryWidgetDay13()),
-                //     );
-                //   },
-                // ),
-                height(16),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Have an account?",
-                      // style: TextStyle(fontSize: 12, color: AppColor.gray88),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          // color: AppColor.blueButton,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          controller: _logic.nameController,
+                          validator: (value) => value == null || value.isEmpty
+                              ? "Nama tidak boleh kosong"
+                              : null,
                         ),
-                      ),
+                        height(8),
+                        buildTitle("NIM"),
+                        height(4),
+                        buildTextField(
+                          hintText: "Enter your student number",
+                          controller: _logic.nimController,
+                          validator: (value) => value == null || value.isEmpty
+                              ? "NIM tidak boleh kosong"
+                              : null,
+                        ),
+                        height(8),
+                        buildTitle("Email Address"),
+                        height(4),
+                        buildTextField(
+                          hintText: "Enter your email",
+                          controller: _logic.emailController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty)
+                              return "Email tidak boleh kosong";
+                            if (!value.contains('@'))
+                              return "Email tidak valid";
+                            if (!RegExp(
+                              r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
+                            ).hasMatch(value))
+                              return "Format Email tidak valid";
+                            return null;
+                          },
+                        ),
+                        height(8),
+                        buildTitle("Password"),
+                        height(4),
+                        buildTextField(
+                          hintText: "Enter your password",
+                          isPassword: true,
+                          controller: _logic.passwordController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty)
+                              return "Password tidak boleh kosong";
+                            if (value.length < 6)
+                              return "Password minimal 6 karakter";
+                            return null;
+                          },
+                        ),
+                        height(16),
+                        LoginButton(
+                          text: "Register", // Teks tetap
+
+                          onPressed: _logic.isLoading ? null : _handleRegister,
+
+                          child: _logic.isLoading
+                              ? SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              : Text("Register"),
+                        ),
+                        height(8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Have an account?",
+                              style: TextStyle(fontSize: 11),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size(50, 30),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              onPressed: () => Navigator.of(
+                                context,
+                              ).pop(), // Kembali ke login
+                              child: Text(
+                                "Sign In",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
+
+                // --- Bagian Daftar Pengguna
+                height(20),
+                Text(
+                  "Pengguna Terdaftar:",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                height(10),
+                Expanded(child: _buildUserList()),
               ],
             ),
           ),
@@ -190,18 +173,51 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
     );
   }
 
-  Container buildBackground() {
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+  Future<void> _handleRegister() async {
+    final result = await _logic.register();
+
+    Fluttertoast.showToast(msg: result['message']);
+  }
+
+  // untuk membangun daftar pengguna
+  Widget _buildUserList() {
+    return FutureBuilder<List<UserModel>>(
+      future: _logic.userListFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text("Error: ${snapshot.error}"));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return Center(child: Text("Belum ada pengguna terdaftar."));
+        } else {
+          final users = snapshot.data!;
+          return ListView.builder(
+            itemCount: users.length,
+            itemBuilder: (context, index) {
+              final user = users[index];
+              return Card(
+                margin: EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text(
+                      user.name?.substring(0, 1).toUpperCase() ?? '?',
+                    ),
+                  ),
+                  title: Text(user.name ?? 'No Name'),
+                  subtitle: Text(
+                    "NIM: ${user.nim ?? '-'} | Email: ${user.email ?? '-'}",
+                  ),
+                ),
+              );
+            },
+          );
+        }
+      },
     );
   }
+
+  // --- Fungsi UI Helper Lainnya
 
   TextFormField buildTextField({
     String? hintText,
@@ -209,40 +225,37 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
     TextEditingController? controller,
     String? Function(String?)? validator,
   }) {
+    // Fungsi buildTextField
     return TextFormField(
       validator: validator,
       controller: controller,
-      obscureText: isPassword ? isVisibility : false,
+      obscureText: isPassword ? !isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
+        filled: true,
+        fillColor: Colors.white.withOpacity(0.9),
+        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
-          borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
-            width: 1.0,
-          ),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
-          borderSide: BorderSide(color: Colors.black, width: 1.0),
+          borderSide: BorderSide(color: Colors.blueAccent, width: 1.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
-          borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
-            width: 1.0,
-          ),
+          borderSide: BorderSide.none,
         ),
+        //untuk visibility password
         suffixIcon: isPassword
             ? IconButton(
-                onPressed: () {
-                  setState(() {
-                    isVisibility = !isVisibility;
-                  });
-                },
+                onPressed: () => setState(
+                  () => isVisibility = !isVisibility,
+                ), // Tetap gunakan setState di sini
                 icon: Icon(
-                  isVisibility ? Icons.visibility_off : Icons.visibility,
-                  // color: AppColor.gray88,
+                  isVisibility ? Icons.visibility : Icons.visibility_off,
+                  size: 20,
                 ),
               )
             : null,
@@ -254,10 +267,16 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
   SizedBox width(double width) => SizedBox(width: width);
 
   Widget buildTitle(String text) {
-    return Row(
-      children: [
-        // Text(text, style: TextStyle(fontSize: 12, color: AppColor.gray88)),
-      ],
+    // Fungsi buildTitle
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16.0, bottom: 2.0),
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 11, color: Colors.grey[700]),
+        ),
+      ),
     );
   }
 }

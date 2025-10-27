@@ -13,36 +13,42 @@ class DbHelper {
       onCreate: (db, version) async {
         // Membuat tabel users
         await db.execute(
-          "CREATE TABLE $tableUser(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, email TEXT, password TEXT)",
+          "CREATE TABLE $tableUser(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, nim TEXT UNIQUE, email TEXT UNIQUE, password TEXT)",
         );
 
         // Membuat tabel students
-        await db.execute(
-          "CREATE TABLE $tableStudent(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, class TEXT, age int)",
-        );
+        // await db.execute(
+        //   "CREATE TABLE $tableStudent(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, nim TEXT UNIQUE, email TEXT UNIQUE, password TEXT)",
+        // );
       },
 
       // Karena ini database baru, onUpgrade tidak akan dijalankan.
-      onUpgrade: (db, oldVersion, newVersion) async {
-        if (newVersion == 2) {
-          await db.execute(
-            "CREATE TABLE $tableStudent(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, class TEXT, age int)",
-          );
-        }
-      },
+      // onUpgrade: (db, oldVersion, newVersion) async {
+      //   if (newVersion == 2) {
+      //     await db.execute(
+      //       "CREATE TABLE $tableStudent(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, class TEXT, age int)",
+      //     );
+      //   }
+      // },
       version: 1,
     );
   }
 
-  static Future<void> registerUser(UserModel user) async {
+  static Future<bool> registerUser(UserModel user) async {
     final dbs = await db();
     //Insert adalah fungsi untuk menambahkan data (CREATE)
-    await dbs.insert(
-      tableUser,
-      user.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-    print(user.toMap());
+    try {
+      await dbs.insert(
+        tableUser, //nama tabel
+        user.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.fail,
+      );
+      print(user.toMap());
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 
   static Future<UserModel?> loginUser({
@@ -75,10 +81,10 @@ class DbHelper {
   }
 
   //GET SISWA
-  static Future<List<StudentModel>> getAllStudent() async {
+  static Future<List<UserModel>> getAllUsers() async {
     final dbs = await db();
-    final List<Map<String, dynamic>> results = await dbs.query(tableStudent);
+    final List<Map<String, dynamic>> results = await dbs.query(tableUser);
     print(results.map((e) => StudentModel.fromMap(e)).toList());
-    return results.map((e) => StudentModel.fromMap(e)).toList();
+    return results.map((e) => UserModel.fromMap(e)).toList();
   }
 }
