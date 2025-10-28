@@ -24,7 +24,7 @@ class RegisterLogic extends ChangeNotifier {
 
   // Fungsi untuk refresh list, sekarang memanggil notifyListeners
   void _refreshUserList() {
-    _userListFuture = DbHelper.getAllUsers();
+    _userListFuture = DbHelper.getAllUser();
     notifyListeners(); // Beri tahu UI bahwa ada data baru untuk ditampilkan
   }
 
